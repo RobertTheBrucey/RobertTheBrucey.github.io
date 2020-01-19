@@ -1,0 +1,13 @@
+#!/bin/bash
+sudo apt install -y ruby-full build-essential zlib1g-dev
+if ! grep "# Install Ruby Gems to ~/gems";then
+    echo '# Install Ruby Gems to ~/gems' >> ~/.bashrc
+    echo 'export GEM_HOME="$HOME/gems"' >> ~/.bashrc
+    echo 'export PATH="$HOME/gems/bin:$PATH"' >> ~/.bashrc
+    source ~/.bashrc
+fi
+gem install jekyll bundler
+bundle init
+bundle add jekyll
+cd docs #(Or whatever)
+bundle exec jekyll new .
